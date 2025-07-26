@@ -38,14 +38,14 @@ export default function UserMenu() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+        className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-700 transition-colors"
       >
-        <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+        <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
           <span className="text-white font-medium text-sm">{initials}</span>
         </div>
-        <span className="text-gray-700 hidden sm:block">{user.name || user.email}</span>
+        <span className="text-gray-700 dark:text-zinc-300 hidden sm:block">{user.name || user.email}</span>
         <svg 
-          className={`w-4 h-4 text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 text-gray-500 dark:text-zinc-400 transition-transform ${isOpen ? "rotate-180" : ""}`}
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
@@ -55,11 +55,11 @@ export default function UserMenu() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-50">
-          <div className="px-4 py-2 border-b border-gray-100">
-            <p className="text-sm font-medium text-gray-900">{user.name}</p>
-            <p className="text-sm text-gray-500">{user.email}</p>
-            <p className="text-xs text-blue-600 mt-1 capitalize">{user.role?.toLowerCase()}</p>
+        <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 py-1 z-50">
+          <div className="px-4 py-2 border-b border-gray-100 dark:border-zinc-700">
+            <p className="text-sm font-medium text-gray-900 dark:text-zinc-100">{user.name}</p>
+            <p className="text-sm text-gray-500 dark:text-zinc-400">{user.email}</p>
+            <p className="text-xs text-yellow-600 dark:text-yellow-400 mt-1 capitalize">{user.role?.toLowerCase()}</p>
           </div>
           
           <button
@@ -67,14 +67,14 @@ export default function UserMenu() {
               setIsOpen(false)
               // Add profile/settings navigation here
             }}
-            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+            className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700"
           >
             Settings
           </button>
           
           <button
             onClick={handleSignOut}
-            className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+            className="w-full text-left px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20"
           >
             Sign out
           </button>

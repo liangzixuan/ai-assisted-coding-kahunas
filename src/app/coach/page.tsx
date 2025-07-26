@@ -79,23 +79,23 @@ export default async function CoachDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-zinc-900">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-white dark:bg-zinc-800 shadow-sm border-b dark:border-zinc-700">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">K</span>
                 </div>
-                <span className="text-2xl font-bold text-gray-900">Kahunas</span>
+                <span className="text-2xl font-bold text-gray-900 dark:text-zinc-100">Kahunas</span>
               </Link>
-              <span className="text-gray-400">|</span>
-              <span className="text-lg font-medium text-gray-700">Coach Dashboard</span>
+              <span className="text-gray-400 dark:text-zinc-500">|</span>
+              <span className="text-lg font-medium text-gray-700 dark:text-zinc-300">Coach Dashboard</span>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="relative p-2 text-gray-400 hover:text-gray-600">
+              <button className="relative p-2 text-gray-400 dark:text-zinc-500 hover:text-gray-600 dark:hover:text-zinc-300">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5-5-5h5V12h5v5zM9 3H4l5-5 5 5H9v5H4V3z" />
                 </svg>
@@ -110,22 +110,22 @@ export default async function CoachDashboard() {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-white border-b">
+      <nav className="bg-white dark:bg-zinc-800 border-b dark:border-zinc-700">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex space-x-8">
-            <Link href="/coach" className="px-3 py-4 text-blue-600 border-b-2 border-blue-600 font-medium">
+            <Link href="/coach" className="px-3 py-4 text-yellow-600 dark:text-yellow-400 border-b-2 border-yellow-500 font-medium">
               Dashboard
             </Link>
-            <Link href="/coach/clients" className="px-3 py-4 text-gray-500 hover:text-gray-700">
+            <Link href="/coach/clients" className="px-3 py-4 text-gray-500 dark:text-zinc-400 hover:text-gray-700 dark:hover:text-zinc-300">
               Clients
             </Link>
-            <Link href="/coach/calendar" className="px-3 py-4 text-gray-500 hover:text-gray-700">
+            <Link href="/coach/calendar" className="px-3 py-4 text-gray-500 dark:text-zinc-400 hover:text-gray-700 dark:hover:text-zinc-300">
               Calendar
             </Link>
-            <Link href="/coach/services" className="px-3 py-4 text-gray-500 hover:text-gray-700">
+            <Link href="/coach/services" className="px-3 py-4 text-gray-500 dark:text-zinc-400 hover:text-gray-700 dark:hover:text-zinc-300">
               Services
             </Link>
-            <Link href="/coach/settings" className="px-3 py-4 text-gray-500 hover:text-gray-700">
+            <Link href="/coach/settings" className="px-3 py-4 text-gray-500 dark:text-zinc-400 hover:text-gray-700 dark:hover:text-zinc-300">
               Settings
             </Link>
           </div>
@@ -135,64 +135,64 @@ export default async function CoachDashboard() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-100 mb-2">
             Welcome back, {user.name || "Coach"}!
           </h1>
-          <p className="text-gray-600">Here&apos;s what&apos;s happening with your coaching practice today.</p>
+          <p className="text-gray-600 dark:text-zinc-400">Here&apos;s what&apos;s happening with your coaching practice today.</p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-sm border dark:border-zinc-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Today&apos;s Sessions</p>
-                <p className="text-2xl font-bold text-gray-900">{todaySessions}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-zinc-400">Today&apos;s Sessions</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-zinc-100">{todaySessions}</p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-sm border dark:border-zinc-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Active Clients</p>
-                <p className="text-2xl font-bold text-gray-900">{clientsCount}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-zinc-400">Active Clients</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-zinc-100">{clientsCount}</p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-sm border dark:border-zinc-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Unread Messages</p>
-                <p className="text-2xl font-bold text-gray-900">{unreadMessagesCount}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-zinc-400">Unread Messages</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-zinc-100">{unreadMessagesCount}</p>
               </div>
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-3.582 8-8 8a8.959 8.959 0 01-4.906-1.447L3 21l2.447-5.094A8.959 8.959 0 013 12c0-4.418 3.582-8 8-8s8 3.582 8 8z" />
                 </svg>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border">
+          <div className="bg-white dark:bg-zinc-800 p-6 rounded-lg shadow-sm border dark:border-zinc-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">This Month&apos;s Revenue</p>
-                <p className="text-2xl font-bold text-gray-900">${monthlyRevenue.toLocaleString()}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-zinc-400">This Month&apos;s Revenue</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-zinc-100">${monthlyRevenue.toLocaleString()}</p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
+                <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
               </div>
