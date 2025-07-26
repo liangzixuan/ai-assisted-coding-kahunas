@@ -1,7 +1,7 @@
 import { resend } from '@/lib/resend';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     console.log('🧪 Testing Resend configuration...');
     
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get admin email
-    const adminEmail = process.env.ADMIN_EMAIL || 'eric_liang_@outlook.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'cary.wheatman@gmail.com';
     
     // Send a simple test email
     const result = await resend.emails.send({

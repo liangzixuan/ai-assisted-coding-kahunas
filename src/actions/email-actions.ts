@@ -4,12 +4,6 @@ import { resend } from '@/lib/resend';
 import { WelcomeEmail } from '../../emails/welcome-email';
 import { render } from '@react-email/render';
 
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
 export async function sendContactEmail(formData: FormData) {
   try {
     // Extract form data

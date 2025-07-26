@@ -185,7 +185,7 @@ export default function Home() {
                 Ready to Transform Your Coaching Business?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Join hundreds of coaches who've streamlined their practice with Kahunas. 
+                Join hundreds of coaches who&apos;ve streamlined their practice with Kahunas. 
                 Get started today and see the difference our platform can make.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

@@ -120,7 +120,7 @@ export default function ClientPortal() {
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back, Ben!</h1>
-          <p className="text-gray-600">Ready for your coaching journey? Here's your latest update.</p>
+          <p className="text-gray-600">Ready for your coaching journey? Here&apos;s your latest update.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -295,7 +295,7 @@ export default function ClientPortal() {
 
                   <div className="mt-4 p-3 bg-green-50 rounded-lg">
                     <p className="text-sm text-green-800">
-                      <span className="font-medium">Great progress!</span> You're on track to complete your goals this quarter.
+                      <span className="font-medium">Great progress!</span> You&apos;re on track to complete your goals this quarter.
                     </p>
                   </div>
                 </div>

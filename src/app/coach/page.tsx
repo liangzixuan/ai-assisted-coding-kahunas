@@ -126,7 +126,7 @@ export default function CoachDashboard() {
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back, Alex!</h1>
-          <p className="text-gray-600">Here's what's happening with your coaching practice today.</p>
+          <p className="text-gray-600">Here&apos;s what&apos;s happening with your coaching practice today.</p>
         </div>
 
         {/* Stats Cards */}
@@ -134,7 +134,7 @@ export default function CoachDashboard() {
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Today's Sessions</p>
+                <p className="text-sm font-medium text-gray-600">Today&apos;s Sessions</p>
                 <p className="text-2xl font-bold text-gray-900">3</p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -176,7 +176,7 @@ export default function CoachDashboard() {
           <div className="bg-white p-6 rounded-lg shadow-sm border">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">This Month's Revenue</p>
+                <p className="text-sm font-medium text-gray-600">This Month&apos;s Revenue</p>
                 <p className="text-2xl font-bold text-gray-900">$4,280</p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
