@@ -5,12 +5,15 @@ import UserMenu from "@/components/auth/user-menu";
 import { notFound } from "next/navigation";
 
 interface ClientDetailPageProps {
-  params: {
+  params: Promise<{
     clientId: string
-  }
+  }>
 }
 
 export default async function ClientDetailPage({ params }: ClientDetailPageProps) {
+  // Await params in Next.js 15
+  const { clientId } = await params;
+  
   // Require coach authentication
   const user = await requireRole("COACH");
 
@@ -18,7 +21,7 @@ export default async function ClientDetailPage({ params }: ClientDetailPageProps
   const relationship = await prisma.clientRelationship.findFirst({
     where: {
       coachId: user.id,
-      clientId: params.clientId
+      clientId: clientId
     },
     include: {
       client: {
