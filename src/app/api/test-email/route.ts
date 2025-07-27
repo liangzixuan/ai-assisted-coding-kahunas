@@ -54,4 +54,6 @@ export async function GET() {
       details: 'Unexpected error occurred'
     }, { status: 500 });
   }
-} 
+}
+
+export const runtime = 'nodejs' 
