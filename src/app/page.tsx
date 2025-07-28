@@ -2,6 +2,7 @@ import Link from "next/link";
 import { auth } from "@/lib/auth";
 import ContactForm from "@/components/contact-form";
 import UserMenu from "@/components/auth/user-menu";
+import EnhancedPricingSection from "@/components/ui/enhanced-pricing-section";
 
 export default async function Home() {
   // Check if user is authenticated
@@ -222,6 +223,9 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Enhanced Pricing Section */}
+      <EnhancedPricingSection />
 
       {/* CTA Section */}
       <section className="px-6 py-20 bg-gradient-to-r from-yellow-500 to-amber-500 dark:from-yellow-600 dark:to-amber-600">
