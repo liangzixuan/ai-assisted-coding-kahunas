@@ -104,7 +104,7 @@ export default function ClientDashboardAnalytics({
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      gradient: "from-blue-500 to-blue-600",
+      gradient: "from-yellow-500 to-amber-500",
       isPositive: true
     },
     {
@@ -160,7 +160,7 @@ export default function ClientDashboardAnalytics({
           <button className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
             Last 30 days
           </button>
-          <button className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">
+          <button className="px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition-colors">
             View Report
           </button>
         </div>
@@ -174,7 +174,7 @@ export default function ClientDashboardAnalytics({
       </div>
 
       {/* Quick Actions Bar */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800">
+      <div className="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 rounded-2xl p-6 border border-yellow-200 dark:border-yellow-800">
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
@@ -185,10 +185,10 @@ export default function ClientDashboardAnalytics({
             </p>
           </div>
           <div className="flex space-x-3">
-            <button className="px-4 py-2 text-sm font-medium text-blue-700 dark:text-blue-400 bg-white dark:bg-gray-800 border border-blue-300 dark:border-blue-600 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
+            <button className="px-4 py-2 text-sm font-medium text-yellow-700 dark:text-yellow-400 bg-white dark:bg-gray-800 border border-yellow-300 dark:border-yellow-600 rounded-lg hover:bg-yellow-50 dark:hover:bg-yellow-900/20 transition-colors">
               View Schedule
             </button>
-            <button className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors">
+            <button className="px-4 py-2 text-sm font-medium text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 transition-colors">
               Book Session
             </button>
           </div>

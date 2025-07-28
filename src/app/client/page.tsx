@@ -126,9 +126,9 @@ export default async function ClientPortal() {
             </div>
             <div className="p-6">
               {coachRelationship ? (
-                <div className="flex items-center justify-between p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                <div className="flex items-center justify-between p-6 bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
                       <span className="text-white font-medium">
                         {coachRelationship.coach.name?.split(' ').map((n: string) => n[0]).join('') || 'C'}
                       </span>
@@ -136,13 +136,13 @@ export default async function ClientPortal() {
                     <div>
                       <p className="font-semibold text-gray-900 dark:text-white">{nextAppointment?.coachName}</p>
                       <p className="text-sm text-gray-600 dark:text-gray-400">{nextAppointment?.type}</p>
-                      <p className="text-lg font-medium text-blue-700 dark:text-blue-400 mt-1">{nextAppointment?.time}</p>
+                      <p className="text-lg font-medium text-yellow-700 dark:text-yellow-400 mt-1">{nextAppointment?.time}</p>
                     </div>
                   </div>
                   <div className="flex flex-col space-y-2">
                     <Link 
                       href="/client/booking"
-                      className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors text-center"
+                      className="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition-colors text-center"
                     >
                       Book Session
                     </Link>
@@ -150,14 +150,14 @@ export default async function ClientPortal() {
                 </div>
               ) : (
                 <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">Connect with a Coach</h3>
                   <p className="text-gray-600 dark:text-gray-400 mb-4">Start your coaching journey by connecting with a professional coach.</p>
-                  <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                  <button className="bg-yellow-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition-colors">
                     Find a Coach
                   </button>
                 </div>
@@ -170,7 +170,7 @@ export default async function ClientPortal() {
             <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Sessions</h2>
-                <Link href="/client/history" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm">
+                <Link href="/client/history" className="text-yellow-600 hover:text-yellow-700 dark:text-yellow-400 dark:hover:text-yellow-300 text-sm">
                   View all
                 </Link>
               </div>
@@ -183,7 +183,7 @@ export default async function ClientPortal() {
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center space-x-3">
                           <span className="text-sm font-medium text-gray-900 dark:text-white">{session.date}</span>
-                          <span className="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 rounded-full">
+                          <span className="text-xs px-2 py-1 bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-300 rounded-full">
                             {session.type}
                           </span>
                           {session.hasFiles && (
@@ -203,7 +203,7 @@ export default async function ClientPortal() {
                   {coachRelationship && (
                     <Link 
                       href="/client/booking"
-                      className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm mt-2 inline-block"
+                      className="text-yellow-600 hover:text-yellow-700 dark:text-yellow-400 dark:hover:text-yellow-300 text-sm mt-2 inline-block"
                     >
                       Book your first session
                     </Link>
@@ -228,7 +228,7 @@ export default async function ClientPortal() {
                   {availableSlots.slice(0, 3).map((slot, index) => (
                     <button 
                       key={index}
-                      className="w-full text-left p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-sm"
+                      className="w-full text-left p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-yellow-50 dark:hover:bg-yellow-900/20 hover:text-yellow-700 dark:hover:text-yellow-300 transition-colors text-sm"
                     >
                       {slot}
                     </button>
@@ -236,7 +236,7 @@ export default async function ClientPortal() {
                 </div>
                 <Link 
                   href="/client/booking"
-                  className="block text-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 text-sm mt-4 font-medium"
+                  className="block text-center text-yellow-600 hover:text-yellow-700 dark:text-yellow-400 dark:hover:text-yellow-300 text-sm mt-4 font-medium"
                 >
                   See all available times
                 </Link>
@@ -252,11 +252,11 @@ export default async function ClientPortal() {
               </div>
               <div className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-medium">
-                      {coachRelationship.coach.name?.split(' ').map((n: string) => n[0]).join('') || 'C'}
-                    </span>
-                  </div>
+                                      <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
+                      <span className="text-white font-medium">
+                        {coachRelationship.coach.name?.split(' ').map((n: string) => n[0]).join('') || 'C'}
+                      </span>
+                    </div>
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white">{coachRelationship.coach.name}</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">{coachRelationship.coach.email}</p>
@@ -265,7 +265,7 @@ export default async function ClientPortal() {
                 {coachRelationship.coach.bio && (
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{coachRelationship.coach.bio}</p>
                 )}
-                <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                <button className="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition-colors">
                   Send Message
                 </button>
               </div>
@@ -281,17 +281,17 @@ export default async function ClientPortal() {
               <div className="p-6">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                    <input type="checkbox" className="w-4 h-4 text-blue-600" />
+                    <input type="checkbox" className="w-4 h-4 text-yellow-600" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">Complete welcome survey</span>
                   </div>
                   
                   <div className="flex items-center space-x-3 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800">
-                    <input type="checkbox" className="w-4 h-4 text-blue-600" />
+                    <input type="checkbox" className="w-4 h-4 text-yellow-600" />
                     <span className="text-sm text-gray-700 dark:text-gray-300">Set initial goals with coach</span>
                   </div>
                   
                   <div className="flex items-center space-x-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                    <input type="checkbox" className="w-4 h-4 text-blue-600" checked />
+                    <input type="checkbox" className="w-4 h-4 text-yellow-600" checked />
                     <span className="text-sm text-gray-700 dark:text-gray-300 line-through">Complete profile setup</span>
                   </div>
                 </div>
@@ -308,12 +308,12 @@ export default async function ClientPortal() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <Link 
               href="/client/booking"
-              className="flex items-center space-x-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors"
+              className="flex items-center space-x-3 p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/30 transition-colors"
             >
-              <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span className="text-sm font-medium text-blue-900 dark:text-blue-300">Book Session</span>
+              <span className="text-sm font-medium text-yellow-900 dark:text-yellow-300">Book Session</span>
             </Link>
             
             <Link 
