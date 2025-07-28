@@ -2,26 +2,31 @@
 
 import React from 'react';
 import ModernSidebar from '@/components/ui/modern-sidebar';
+import ClientSidebar from '@/components/ui/client-sidebar';
 import UserMenu from '@/components/auth/user-menu';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
   title?: string;
   subtitle?: string;
+  role?: 'COACH' | 'CLIENT';
 }
 
 export default function DashboardLayout({ 
   children, 
   title = "Dashboard",
-  subtitle = "Manage your coaching practice"
+  subtitle = "Manage your coaching practice",
+  role = 'COACH'
 }: DashboardLayoutProps) {
+  const SidebarComponent = role === 'CLIENT' ? ClientSidebar : ModernSidebar;
+  
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Sidebar */}
-      <ModernSidebar />
+      <SidebarComponent />
       
       {/* Main content */}
-      <div className="flex-1 lg:ml-64">
+      <div className="flex-1 lg:ml-64 transition-all duration-300 ease-in-out">
         {/* Top header */}
         <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-30">
           <div className="px-6 py-4">
