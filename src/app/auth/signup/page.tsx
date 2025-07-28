@@ -5,6 +5,8 @@ import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import type { UserRole } from "@/types/auth"
+import ModernInput from "@/components/ui/modern-input"
+import ModernButton from "@/components/ui/modern-button"
 
 export default function SignUpPage() {
   const [formData, setFormData] = useState({
@@ -16,25 +18,57 @@ export default function SignUpPage() {
   })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  })
   const router = useRouter()
+
+  const validateForm = () => {
+    const errors = {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    }
+
+    if (!formData.name.trim()) {
+      errors.name = "Name is required"
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = "Email is required"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = "Please enter a valid email address"
+    }
+
+    if (!formData.password) {
+      errors.password = "Password is required"
+    } else if (formData.password.length < 8) {
+      errors.password = "Password must be at least 8 characters long"
+    }
+
+    if (!formData.confirmPassword) {
+      errors.confirmPassword = "Please confirm your password"
+    } else if (formData.password !== formData.confirmPassword) {
+      errors.confirmPassword = "Passwords do not match"
+    }
+
+    setFormErrors(errors)
+    return !Object.values(errors).some(error => error !== "")
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
     setError("")
 
-    // Validation
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match")
-      setIsLoading(false)
+    if (!validateForm()) {
       return
     }
 
-    if (formData.password.length < 8) {
-      setError("Password must be at least 8 characters long")
-      setIsLoading(false)
-      return
-    }
+    setIsLoading(true)
 
     try {
       const response = await fetch("/api/auth/signup", {
@@ -92,24 +126,24 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-amber-100 dark:from-zinc-900 dark:to-zinc-800 flex items-center justify-center p-6">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-2 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">K</span>
             </div>
-            <span className="text-2xl font-bold text-gray-900">Kahunas</span>
+            <span className="text-2xl font-bold text-gray-900 dark:text-zinc-100">Kahunas</span>
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create your account</h1>
-          <p className="text-gray-600">Start your coaching journey today</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-100 mb-2">Create your account</h1>
+          <p className="text-gray-600 dark:text-zinc-400">Start your coaching journey today</p>
         </div>
 
         {/* Sign Up Form */}
-        <div className="bg-white rounded-lg shadow-sm border p-8">
+        <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-sm border dark:border-zinc-700 p-8">
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+            <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
               {error}
             </div>
           )}
@@ -117,112 +151,92 @@ export default function SignUpPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Role Selection */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-3">
                 I am a...
               </label>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, role: "COACH" })}
-                  className={`p-4 border-2 rounded-lg text-center transition-colors ${
+                  className={`p-4 border-2 rounded-lg text-center transition-all duration-300 ${
                     formData.role === "COACH"
-                      ? "border-blue-600 bg-blue-50 text-blue-700"
-                      : "border-gray-200 hover:border-gray-300"
+                      ? "border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 shadow-md"
+                      : "border-gray-200 dark:border-zinc-600 hover:border-gray-300 dark:hover:border-zinc-500 hover:bg-gray-50 dark:hover:bg-zinc-700"
                   }`}
                 >
                   <div className="font-medium">Coach</div>
-                  <div className="text-xs text-gray-500 mt-1">I coach clients</div>
+                  <div className="text-xs text-gray-500 dark:text-zinc-400 mt-1">I coach clients</div>
                 </button>
                 <button
                   type="button"
                   onClick={() => setFormData({ ...formData, role: "CLIENT" })}
-                  className={`p-4 border-2 rounded-lg text-center transition-colors ${
+                  className={`p-4 border-2 rounded-lg text-center transition-all duration-300 ${
                     formData.role === "CLIENT"
-                      ? "border-blue-600 bg-blue-50 text-blue-700"
-                      : "border-gray-200 hover:border-gray-300"
+                      ? "border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 shadow-md"
+                      : "border-gray-200 dark:border-zinc-600 hover:border-gray-300 dark:hover:border-zinc-500 hover:bg-gray-50 dark:hover:bg-zinc-700"
                   }`}
                 >
                   <div className="font-medium">Client</div>
-                  <div className="text-xs text-gray-500 mt-1">I need coaching</div>
+                  <div className="text-xs text-gray-500 dark:text-zinc-400 mt-1">I need coaching</div>
                 </button>
               </div>
             </div>
 
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Full name
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Alex Thompson"
-              />
-            </div>
+            <ModernInput
+              label="Full name"
+              type="text"
+              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              placeholder="Alex Thompson"
+              error={formErrors.name}
+            />
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email address
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="alex@example.com"
-              />
-            </div>
+            <ModernInput
+              label="Email address"
+              type="email"
+              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              placeholder="alex@example.com"
+              error={formErrors.email}
+            />
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="••••••••"
-              />
-              <p className="text-xs text-gray-500 mt-1">Must be at least 8 characters</p>
-            </div>
+            <ModernInput
+              label="Password"
+              type="password"
+              required
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              placeholder="••••••••"
+              error={formErrors.password}
+            />
 
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-                Confirm password
-              </label>
-              <input
-                id="confirmPassword"
-                type="password"
-                required
-                value={formData.confirmPassword}
-                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="••••••••"
-              />
-            </div>
+            <ModernInput
+              label="Confirm password"
+              type="password"
+              required
+              value={formData.confirmPassword}
+              onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+              placeholder="••••••••"
+              error={formErrors.confirmPassword}
+            />
 
-            <button
+            <ModernButton
               type="submit"
               disabled={isLoading}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              isLoading={isLoading}
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-white"
             >
               {isLoading ? "Creating account..." : "Create account"}
-            </button>
+            </ModernButton>
           </form>
 
           {/* Divider */}
           <div className="my-6 flex items-center">
-            <div className="flex-1 border-t border-gray-300"></div>
-            <span className="px-4 text-sm text-gray-500">Or continue with</span>
-            <div className="flex-1 border-t border-gray-300"></div>
+            <div className="flex-1 border-t border-gray-300 dark:border-zinc-600"></div>
+            <span className="px-4 text-sm text-gray-500 dark:text-zinc-400">Or continue with</span>
+            <div className="flex-1 border-t border-gray-300 dark:border-zinc-600"></div>
           </div>
 
           {/* OAuth Buttons */}
@@ -230,7 +244,7 @@ export default function SignUpPage() {
             <button
               onClick={handleGoogleSignIn}
               disabled={isLoading}
-              className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-100 rounded-lg hover:bg-gray-50 dark:hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -244,9 +258,9 @@ export default function SignUpPage() {
 
           {/* Sign in link */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-zinc-400">
               Already have an account?{" "}
-              <Link href="/auth/login" className="text-blue-600 hover:text-blue-700 font-medium">
+              <Link href="/auth/login" className="text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 font-medium">
                 Sign in
               </Link>
             </p>
