@@ -18,6 +18,19 @@ enum UserRole {
   CLIENT
 }
 
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum TimeBlockType {
+  AVAILABLE
+  UNAVAILABLE
+  BREAK
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -44,9 +57,12 @@ model User {
   
   // Coach-specific relations
   coachClients  ClientRelationship[] @relation("CoachUser")
+  coachAppointments Appointment[] @relation("CoachAppointment")
+  coachTimeBlocks TimeBlock[] @relation("CoachTimeBlock")
   
   // Client-specific relations
   clientCoaches ClientRelationship[] @relation("ClientUser")
+  clientAppointments Appointment[] @relation("ClientAppointment")
   
   @@map("users")
 }
@@ -103,4 +119,41 @@ model ClientRelationship {
   
   @@unique([coachId, clientId])
   @@map("client_relationships")
+}
+
+model Appointment {
+  id          String            @id @default(cuid())
+  coachId     String
+  clientId    String
+  date        String            // YYYY-MM-DD format
+  startTime   String            // HH:MM format
+  endTime     String            // HH:MM format
+  duration    Int               // in minutes
+  type        String            // session type
+  status      AppointmentStatus @default(PENDING)
+  notes       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  
+  coach       User              @relation("CoachAppointment", fields: [coachId], references: [id], onDelete: Cascade)
+  client      User              @relation("ClientAppointment", fields: [clientId], references: [id], onDelete: Cascade)
+  
+  @@map("appointments")
+}
+
+model TimeBlock {
+  id          String        @id @default(cuid())
+  coachId     String
+  date        String        // YYYY-MM-DD format
+  startTime   String        // HH:MM format
+  endTime     String        // HH:MM format
+  type        TimeBlockType @default(AVAILABLE)
+  title       String
+  description String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  
+  coach       User          @relation("CoachTimeBlock", fields: [coachId], references: [id], onDelete: Cascade)
+  
+  @@map("time_blocks")
 }
